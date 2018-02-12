@@ -1,26 +1,32 @@
 import Card from './Card';
-import fetchInstas from '../actions';
-import {connect} from 'react-redux';
+import Instafeed from 'react-instafeed';
 var React = require('react');
 
 class Feed extends React.Component {
-  componentDidMount() {
-    this.props.fetchInstas();
-  }
-
   render() {
+    const instafeedTarget = 'instafeed';
+
+
     return (
-      <div>
-        <Card/>
-      </div>
-    )
+        <div id={instafeedTarget}>
+          <Instafeed
+            limit='5'
+            ref='instafeed'
+            resolution='standard_resolution'
+            sortBy='most-recent'
+            target={instafeedTarget}
+            template=''
+            userId='22107223'
+            clientId='f0d8c10cf88844ca9056cf3311dc12ad'
+            accessToken='
+22107223.f0d8c10.b8b0481c066b4e22ab3c371e08b00bea'
+          />
+        </div>
+      )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    instas: state.instas.data
-  }
-}
 
-export default connect(mapStateToProps, {fetchInstas})(Feed);
+
+
+export default Feed;
